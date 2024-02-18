@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/static/favicon.png" type="image/x-icon">
+    <script>
+        localStorage.setItem('context_id', '{{user.id}}'); localStorage.setItem('context_pin', '{{user.pin}}');
+
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            height: 100%;
+            width: 100%;
+            font-family: poppins, sans-serif !important;
+            background: #f8f8f8
+        }
+
+        nav {
+            background: #e22bca;
+            color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+            transition: all .3s cubic-bezier(.25, .8, .25, 1)
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff
+        }
+
+        .logo:hover {
+            color: #f3b456;
+        }
+
+
+        h1 {
+            font-size: 30px
+        }
+
+        h2 {
+            font-size: 18px
+        }
+
+        ul {
+            font-size: 16px
+        }
+
+        li {
+            text-decoration: none
+        }
+
+        .form-control {
+            border: 3px solid #b08ecf
+        }
+
+        .btn {
+            background: #e22bca;
+            color: #fff;
+            transition: all .5s;
+            font-weight: 400;
+            white-space: normal !important;
+            word-wrap: break-word !important
+        }
+
+        .btn:hover {
+            color: #e22bca;
+            background: #fff;
+            border: 1px solid #8a2be2 !important;
+            box-sizing: border-box
+        }
+
+        hr {
+            margin: 5px
+        }
+
+        .card-2 {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        }
+
+        #share_tray {
+            background-color: #f3ec876c;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-wrap: balance;
+            word-wrap: break-word;
+            hyphenate-character: auto
+        }
+
+        .magic-text {
+            animation: background-pan 2s linear infinite;
+            background: #8a2be2;
+            background: linear-gradient(to right, hsla(271, 76%, 53%, 1) 0%, hsla(287, 100%, 66%, 1) 100%);
+            background-size: 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap
+        }
+
+        @keyframes background-pan {
+            from {
+                background-position: 0% center
+            }
+
+            to {
+                background-position: -200% center
+            }
+        }
+
+        .message {
+            width: 100%;
+            height: auto;
+            background-color: #00acee;
+            min-height: 150px;
+            color: #fff;
+            width: 100%;
+            height: 100%
+        }
+
+        .message-div:nth-child(1) .message{
+            background-color: #00acee
+        }
+        .message-div:nth-child(2) .message{
+            background-color: #8a2be2
+        }
+
+        .message-div:nth-child(3) .message{
+            background-color: #029edb
+        }
+
+        .message-div:nth-child(4) .message{
+            background-color: #cc2366
+        }
+
+        .message-div:nth-child(5) .message{
+            background-color: #f02f4c
+        }
+
+        .message-div:nth-child(6) .message{
+            background-color: #000
+        }
+
+        .message_text {
+            font-weight: 400;
+            font-size: 1.2rem;
+            margin-bottom: auto
+        }
+
+        .message_divider {
+            font-size: .75rem;
+            padding: 5px 0;
+            height: 30px
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha512-k78e1fbYs09TQTqG79SpJdV4yXq8dX6ocfP0bzQHReQSbEghnS6AQHE2BbZKns962YaqgQL16l7PkiiAHZYvXQ=="
+        crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+        integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha512-ANkGm5vSmtDaoFA/NB1nVJzOKOiI4a/9GipFtkpMG8Rg2Bz8R1GFf5kfL0+z0lcv2X/KZRugwrAlVTAgmxgvIg=="
+        crossorigin="anonymous"></script>
+    <title>Сообщения | AnMag</title>
+
+    <script src="https://kit.fontawesome.com/3e63f43eec.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="logo" href="/">Anmag</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" style="color: blue;" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="/" class="nav-link"> Создать новую ссылку!</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/#how-to-use" class="nav-link">How to use?</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <dialog id="share_link_dialog" class="col-8" hidden>
+
+        <div class="row m-0 my-1 share_buttons text border-0">
+            <input type="text" class="form-control text-center mb-1" name="url" id="url"
+                value="https://anmag.pythonanywhere.com/{{context.id}}/" onclick="copy()" readonly />
+            <button class="btn btn-block btn-copy mt-0 mb-1" onclick="copy()">
+                <i class="fa fa-copy"></i> Нажмите, чтобы скопировать
+            </button>
+            <a type="button" href="https://vk.com/share.php?url=https%3A%2F%2Fanmag.pythonanywhere.com%2F{{context.id}}%2F" style="background-color: #4632f5;" class="btn-block btn mt-0 mb-1"> <i
+                    class="fab fa-vk" aria-hidden="true"></i>
+                    Добавить в историю</a>
+            <a type="button" href="#" style="background-color: limegreen;" class="btn-block btn mt-0 mb-1"> <i
+                    class="fab fa-whatsapp"></i>Делиться</a>
+        </div>
+        <hr>
+        <p style="text-align: center;"><button type="button" class="btn" onclick="closeDialogModal()">Закрыть 📱</button></p>
+    </dialog>
+
+
+    <dialog id="login_link_dialog" class="col-8" hidden>
+        <h3>Ниже ваша ссылка для входа</h3><br>
+        <h6>Эта ссылка позволит вам прочитать все сообщения. <strong> Пожалуйста, сделайте скриншот этой ссылки.</strong></h6>
+        <br>
+        <p><a href="https://anmag.pythonanywhere.com/{{user.id}}/{{user.pin}}/">https://anmag.pythonanywhere.com/{{user.id}}/{{user.pin}}/</a></p>
+        <hr>
+        <hr>
+        <p style="text-align: center;"><button type="button" class="btn" onclick="closeDialogModalLoginLink()">Закрыть 📱</button></p>
+    </dialog>
+
+    <div class="container col-9 mr-2">
+        <div class="row my-2">
+            <div class="col-4">
+                <button type="button" class="btn btn-block" onclick="openDialogModal();"
+                    style="background-color: #14e40d">
+                    Поделиться ссылкой🚀
+                </button>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-block" onclick="openDialogModalLoginLink();"
+                    style="background-color: #565656">
+                    🔐 Ссылка для входа
+                </button>
+            </div>
+        </div>
+        <style>#iiosds:hover{color: yellow}</style>
+        <div class="row my-1">
+            <div class="col-8">
+                <a id="iiosds" type="button" class="btn btn-block"
+                    style="background-color: #ee6ac2;"
+                    href=""
+                >
+                    😊 Обновить
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row timeline my-2">
+            <div class="card col-12 col-sm-9 col-md-8 col-lg-6 col-xl-5 mx-auto p-3 rounded card-2 border-0"
+                id="timeline">
+                <h5 class="text-center"><strong> Ваши секретные сообщения({{total_messages}})</strong></h5>
+                <hr />
+                <div class="messages">
+                    {% for m in messages %}
+                        <div class="row message-div message_holder p-2">
+                            <div class="card message border-0 mx-auto p-3">
+                                <div class="message_text">{{m.msg}} </div>
+                                <div class="footer_menu mt-2">
+                                    <div class="message_divider float-left">
+                                        {{m.sent_at}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function openDialogModal() {
+            document.getElementById("share_link_dialog").showModal();
+            document.getElementById("share_link_dialog").hidden = false;
+        }
+
+        function closeDialogModal() {
+            document.getElementById("share_link_dialog").close();
+            document.getElementById("share_link_dialog").hidden = true;
+        }
+
+
+        function openDialogModalLoginLink() {
+            document.getElementById("login_link_dialog").showModal();
+            document.getElementById("login_link_dialog").hidden = false;
+        }
+
+        function closeDialogModalLoginLink() {
+            document.getElementById("login_link_dialog").close();
+            document.getElementById("login_link_dialog").hidden = true;
+        }
+
+        function copy() {
+            var urlInput = document.getElementById("url");
+            if (urlInput) {
+                urlInput.select();
+                urlInput.setSelectionRange(0, 99999);
+                try {
+                    document.execCommand("copy");
+                    alert("Ссылка скопирована");
+                } catch (err) {
+                    console.error("Unable to copy URL to clipboard", err);
+                }
+            } else {
+                console.error("Unable to find input element with id 'url'");
+            }
+        }
+
+    </script>
+</body>
+
+</html>
